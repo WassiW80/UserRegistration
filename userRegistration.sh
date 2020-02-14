@@ -1,14 +1,18 @@
-#!/bin/bash -x
+#!/bin/bash 
 shopt -s extglob
 echo "Welcome to User Registration."
+read -p "Enter First name minimum 3 character: " firstname
+read -p "Enter Last name minimum 3 character: " lastname
+name="firstname"
+name2="lastname"
 function validateFirstname() {
-	read -p "Enter user name minimum 3 character: " firstname
-	firstnamePattern="^[A-Z]{1}[A-Za-z]{2,}$"
-	if [[ $firstname =~ $firstnamePattern ]]
+	namePattern="^[A-Z]{1}[a-z]{2,}$"
+	if [[ $1 =~ $namePattern ]]
 	then
-		echo valid
+		echo "$2 valid"
 	else
-		echo invalid
+		echo "$2 invalid"
 	fi
 }
-validateFirstname
+validateFirstname $firstname $name
+validateFirstname $lastname $name2
